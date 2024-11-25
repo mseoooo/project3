@@ -1,0 +1,14 @@
+server:
+  port: 8030
+
+spring:
+  cloud:
+    vault:
+      enabled: false
+  mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.example.jwtproject.model
+
+jwt:
+  expiration-time: 600000                   # 10분 (밀리초 단위)
+  refresh-expiration-time: 604800000         # 7일 (밀리초 단위)
