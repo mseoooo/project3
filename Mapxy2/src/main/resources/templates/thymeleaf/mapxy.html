@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Map Example</title>
+<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=45b6dd2d31de3348ac552f3a2e16ee18&libraries=services,clusterer"></script>
+   <link rel="stylesheet" href="/css/mapxy.css" type="text/css" />   
+</head>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbAZpPBnttaeaz3DfzOAKb0pb1538rxXY&callback=initMap" async defer></script>
+<body>
+    <div th:replace="~{thymeleaf/header.html}"></div>
+
+    <!-- 여행 플래닝 본 화면 -->
+    <div id="container">
+        <div id="left-side">
+            <h2>내 주변 볼거리 찾기</h2>
+            <!-- 출발지 입력 -->
+            <table id="class01">
+                <tr id="wrap">
+                    <th id="id2_name">출발지: </th>   
+                    <th id="destination" class="destination-input"></th>
+                </tr>
+                <tr id="wrap">
+                    <th id="id2_name">일정: </th>
+                    <th id="id3_plan"></th>
+                </tr>
+            </table>
+            <table id="itinerary"></table>
+            <button id="completeButton" onclick="showModal()">최종선택</button>
+        </div>
+
+        <!-- 지도 -->
+        <div id="map"></div>
+    </div>
+
+    <div id="field"></div> <!-- Add this element for appending new destination rows -->
+
+   <!-- 최종 경로 모달창 -->
+      <div id="destinationModal" class="modal">
+          <div class="modal-content">
+              <span id="closeModal" class="close">&times;</span>
+              <h2>나의 최종 여행지 목록</h2>
+              <ul id="destinationList"></ul>
+			  <div>
+            <button id="homeButton" onclick="goHome()">홈으로 가기</button>
+			</div>
+          </div>
+      </div>
+   
+	  <!--Controller model 세션값 전역변수 처리-->
+   <script th:inline="javascript">
+      let touristSpots = /*[[${placeNames}]]*/[];
+      let touristOverviews = /*[[${overviews}]]*/[];
+      let touristAl = /*[[${altitudes}]]*/[];
+      let touristLo = /*[[${longtitudes}]]*/[];
+      let altitude = /*[[${altitude}]]*/ 0;
+      let longitude = /*[[${longtitude}]]*/ 0;
+     
+      let touristSpots2 = /*[[${placeNames2}]]*/[];
+      let touristOverviews2 = /*[[${overviews2}]]*/[];
+      let touristAl2 = /*[[${altitudes2}]]*/[];
+      let touristLo2 = /*[[${longtitudes2}]]*/[];
+     
+      var map;
+      var markers = []; // 현재 지도에 표시된 마커를 저장하는 배열
+         </script>
+      
+      <!--이전 페이지(사용자 정보 입력) 출발지 및 일정 정보 전역변수 처리-->
+      <script th:inline="javascript">
+      // Thymeleaf 변수를 JavaScript 변수로 삽입
+      var departureValue = /*[[${departure}]]*/ "";
+      var planValue = /*[[${plan}]]*/ "";
+     </script>   
+	      
+     <div th:replace="~{thymeleaf/footer.html}"></div>
+     <script src="/js/mapxy.js" async></script>
+    <script>
+      window.onload = function () {
+         loadHTML('header', 'header.html');
+         loadHTML('footer', 'footer.html');
+      };</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>여행플랜짜기</title>
+	<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+	<link rel="stylesheet" href="/css/basic_info.css" type="text/css" />
+</head>
+
+<body>
+	
+	<script>
+	         document.addEventListener('DOMContentLoaded', function () {
+	            var userId = "[[${session.userId}]]";
+	            var userName = "[[${session.userName}]]"
+	            // userId가 존재하면 sessionStorage에 저장
+	            if (userName) {
+	               sessionStorage.setItem('userName', userName);
+	               sessionStorage.setItem('userId', userId);
+	               console.log("세션 스토리지에 저장된 userName:", sessionStorage.getItem('userName'));
+	            }
+	         });
+	      </script>
+
+	<div th:replace="~{thymeleaf/header.html}"></div>
+
+	<form onsubmit="return validateForm()" id="mainForm" action="/mapxy" method="post">
+		<div class="container">
+			<table>
+				<!-- 지역 입력 -->
+				<tr>
+					<td><b><label for="areaSelect">지역</label></b></td>
+					<td>
+						<select id="areaSelect" required>
+							<option value="">지역을 선택하세요</option>
+							<option value="서울특별시">서울특별시</option>
+							<option value="경기도">경기도</option>
+							<option value="강원특별자치도">강원특별자치도</option>
+							<option value="경상도">경상도</option>
+							<option value="충청도">충청도</option>
+							<option value="전라도">전라도</option>
+							<option value="제주도특별자치도">제주도특별자치도</option>
+						</select>
+					</td>
+				</tr>
+
+				<!-- 출발지 입력 -->
+				<tr>
+					<td><b><label for="departureInput">출발지</label></b></td>
+					<td>
+						<input type="text" id="departureInput" name="departure" placeholder="출발지를 입력하세요"
+							oninput="getCoordinates()" required>
+						<input type="hidden" id="altitudeInput" name="altitude">
+						<input type="hidden" id="longtitudeInput" name="longtitude">
+					</td>
+				</tr>
+
+				<!-- 출발 시간 입력 -->
+				<tr>
+					<td><b><label for="departureTime">출발시간</label></b></td>
+					<td>
+						<input type="time" id="departureTime" required>
+					</td>
+				</tr>
+
+				<tr>
+					<td><b>시작일</b></td>
+					<td><input type="date" id="start-date" required></td>
+				</tr>
+				<tr>
+					<td><b>종료일</b></td>
+					<td><input type="date" id="end-date" required></td>
+				</tr>
+				<!--O박 O일 일정 선택-->
+				<tr>
+					<td><b>일정</b></td>
+					<td><input type="text" name="plan" id="dd" placeholder=" 박  일" size="30"></td>
+				</tr>
+			</table>
+			<br>
+			<tr>
+				<td colspan="2" align="right">
+					<button type="submit" id="submit-btn">여행일정짜기</button>
+					<button type="button" onclick="resetForm()" style="margin-top: 10px;">초기화</button>
+				</td>
+			</tr>
+
+		</div>
+	</form>
+
+	<!--FOOTER START -->
+	<div th:replace="~{thymeleaf/footer.html}"></div>
+
+	<div class="clearfix"></div>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbAZpPBnttaeaz3DfzOAKb0pb1538rxXY&callback=initMap"
+		async defer></script>
+	<script src="/js/geocoding.js"></script>
+	<script src="/js/basic_info.js"></script>
+	<script src="/js/headerandfooter.js"></script>
+
+</body>
+
+</html>

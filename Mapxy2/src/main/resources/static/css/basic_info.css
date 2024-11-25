@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+
+.orbit-regular {
+    font-family: "Orbit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 기본 리셋 */
+body,
+h1,
+p,
+form,
+div,
+input,
+button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Orbit", sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 15px;
+	margin: 0 auto;
+	height: 100%;
+}
+
+
+
+.container {
+    background-color: white;
+    padding: 50px;
+    width: 100%;
+    max-width: 900px; /* 최대 너비는 유지 */
+    font-family: "Orbit", sans-serif;
+    border: none;  /* 테두리 없앰 */
+    margin:20px auto;  /* 중앙 정렬 */
+    box-shadow: none; /* outer box 그림자 제거 */
+    border-radius: 0; /* 둥근 모서리 제거 */
+	height: 700px;
+}
+
+article {
+    margin-bottom: 20px;
+}
+
+
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+table td {
+    padding: 10px 0;
+}
+
+table label {
+    font-size: 16px;
+    color: black;
+}
+
+input, select, option {
+    font-family: "Orbit", sans-serif; /* Orbit 폰트 적용 */
+	color: #666;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+input:focus, select:focus {
+    border-color: #7f9e9f;
+    outline: none;
+    background-color: #fff;
+}
+
+input[type="date"], input[type="time"] {
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"] {
+    background-color: #72C8CF;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(0, 128, 255);
+}
+
+button[type="button"] {
+    background-color: #FC7169;
+    color: white;
+    margin-top: 10px;
+}
+
+button[type="button"]:hover {
+    background-color: #d32f2f;
+}
+
+@media (max-width: 500px) {
+    #wrap {
+        padding: 30px;
+    }
+
+    button {
+        padding: 10px 20px;
+    }
+
+    input, select {
+        padding: 10px;
+    }
+}

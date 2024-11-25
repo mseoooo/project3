@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="mapper.mybatismapper"> -->
+<mapper namespace="com.sboot.kaja.dao.MapDAO">
+
+<!--관광지 DB 부르기-->
+<select id="getAllMapxy" resultType="com.sboot.kaja.vo.MapVO">
+	<!--SELECT longtitude, altitude FROM attraction where sigungu = #{sigungu}-->
+	SELECT a.*, DBMS_LOB.SUBSTR(a.overview, 40, 1) AS overview40 FROM attraction a
+</select>
+
+<!--식당&카페 DB 부르기-->
+<select id="getAllMapxy2" resultType="com.sboot.kaja.vo.MapVO2">
+	<!--SELECT longtitude, altitude FROM attraction where sigungu = #{sigungu}-->
+	SELECT a.*, DBMS_LOB.SUBSTR(a.overview, 40, 1) AS overview40 FROM food a
+</select>
+
+</mapper>

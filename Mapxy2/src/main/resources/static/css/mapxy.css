@@ -1,0 +1,267 @@
+@import
+   url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+
+   body {
+      font-family: "Orbit", sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      /* 가로로 나란히 배치 */
+      align-items: flex-start;
+      justify-content: center;
+      height: 74.92vh;
+      box-sizing: border-box;
+   }
+
+   #container {
+      display: flex;
+      width: 100%;
+      height: 74.92vh;
+      /* 화면의 전체 높이에 맞춤 */
+      justify-content: center;
+      align-items: flex-start;
+   }
+
+   /* 왼쪽 섹션 스타일 */
+   #left-side {
+      width: 40%;
+      padding: 20px;
+      overflow-y: auto;
+      height: 74.92vh;
+      background-color: #f4f4f4;
+      box-sizing: border-box;
+   }
+
+   /* 지도 섹션 스타일 */
+   #map {
+      width: 60%;
+      height: 74.92vh;
+      box-sizing: border-box;
+   }
+
+   /* 지도 스타일 */
+   #map {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+   }
+
+   /* 반응형 스타일 */
+   @media (max-width: 768px) {
+      body {
+         flex-direction: column;
+         /* 작은 화면에서 세로로 배치 */
+         align-items: center;
+      }
+
+      #left-side,
+      #map {
+         width: 90%;
+         /* 모바일에서 가로 폭을 90%로 설정 */
+         height: auto;
+         /* 높이 자동으로 설정 */
+      }
+   }
+   
+   /* 추가적인 스타일 */
+   table {
+      width: 100%;
+      margin-top: 10px;
+      border-collapse: collapse;
+      border-color: white;
+      font-size: 1em;
+   }
+
+   th,
+   td {
+      padding: 6px 10px;
+      text-align: left;
+      border: 1px solid #f4f4f4;
+   }
+
+   input[type="button"] {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 15px;
+   }
+
+   /* 작은 화면에서 버튼과 테이블 크기 조정 */
+   @media (max-width: 480px) {
+
+      table,
+      th,
+      td {
+         font-size: 0.8em;
+      }
+
+      th,
+      td {
+         padding: 6px;
+      }
+
+      input[type="button"] {
+         width: 100%;
+         padding: 10px;
+         font-size: 1em;
+      }
+   }
+   
+   /*초반 출발지/일정과 넘어온 파라미터 텍스트값 사이 간격 조정*/
+   #class01 th {
+       display: inline-block;
+       vertical-align: middle;  /* 수직 정렬 */
+       padding: 0;  /* 기본 padding 제거 */
+       margin: 0;  /* 기본 margin 제거 */
+	   white-space: nowrap;  /* 텍스트가 줄 바꿈 없이 한 줄로 표시 */
+	   width: 60px;  /* 원하는 너비로 설정 */
+	   text-align: left;  /* 왼쪽 정렬 */
+   }
+
+   /********************************/
+
+   /* 모달 창 스타일 */
+   .modal {
+      display: none;
+      /* 기본적으로 숨겨져 있음 */
+      position: fixed;
+      z-index: 1;
+      /* 화면 상에서 가장 위에 표시되도록 */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      /* 배경 색 */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* 배경 반투명 */
+   }
+
+   /* 모달 콘텐츠 */
+   .modal-content {
+	 background-color: #fefefe;
+	 margin: 0; /* 기본 margin 제거 */
+	 padding: 20px;
+	 border: 1px solid #888;
+	 width: 80%;
+	 /* 모달의 크기 */
+	 max-width: 500px;
+	 position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%); /* 중앙 정렬 */
+	 max-height: 55vh; /* 최대 높이 설정 */
+	 overflow-y: auto; /* 스크롤 가능하게 설정 */
+	 position: relative;
+   }
+
+   /* 모달 닫기 버튼 */
+   .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+   }
+
+   .close:hover,
+   .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+   }
+
+   #destinationList {
+      list-style-type: none;
+      /* 기본 리스트 스타일 제거 */
+      padding-left: 0;
+      text-align: left;
+   }
+
+   .day-title {
+      list-style-type: none;
+      /* 기본 리스트 스타일 제거 */
+      padding-left: 0;
+      text-align: left;
+   }
+
+   #destinationList li {
+      margin: 10px 0;
+   }
+
+   /* 홈으로 가기 버튼 */
+   #homeButton {
+     font-family: "Orbit", sans-serif;
+     padding: 10px 20px; /* 상하좌우 패딩 */
+     font-size: 16px;
+     background-color: rgb(114, 200, 207); /* 버튼 배경 색 */
+     color: white;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     /*z-index: 10;*/
+     
+     /* 버튼을 오른쪽으로 밀기 */
+     margin-left: auto;  /* 왼쪽 여백을 자동으로, 오른쪽으로 밀기 */
+     margin-right: 0;    /* 오른쪽 여백을 0으로 설정 */
+     display: block;     /* 블록 요소로 만들어 margin-left가 작동하도록 */
+   }
+
+   #homeButton:hover {
+      background-color:  rgb(252, 113, 105);
+      /* 버튼 hover 시 색상 변화 */
+   }
+
+   /********************************/
+   /* 경로 짜기 스타일 */
+   /* 관광지, 식당/카페 버튼 */
+   #nearbyButton {
+       background-color: rgb(114, 200, 207);
+      border-radius: 10px;
+   }
+
+   /* 버튼 hover 시 색상 변화 */
+   #nearbyButton:hover {
+       background-color: rgb(252, 113, 105);
+   }
+
+   /* +, -, 완료 버튼 */
+   #finishButton {
+       background-color: rgb(114, 200, 207);
+      border-radius: 10px;
+   }
+
+   /* 버튼 hover 시 색상 변화 */
+   #finishButton:hover {
+       background-color: rgb(252, 113, 105);
+   }
+
+   /* 최종선택 버튼 */
+   #completeButton {
+       background-color: rgb(114, 200, 207);
+      border-radius: 10px;
+   }
+
+   /* 버튼 hover 시 색상 변화 */
+   #completeButton:hover {
+       background-color: rgb(252, 113, 105);
+   }
+
+
+   /* 도착지 입력칸 */
+   .destination-header {
+       display: flex;
+       align-items: center; /* 수직 가운데 정렬 */
+       gap: 10px; /* 텍스트와 입력 칸 사이 간격 */
+   }
+
+   .destination-header>input {
+       width: 150px;
+       height: 36px;
+       box-sizing: border-box;
+       border-radius: 20px;
+       font-family: "Orbit", sans-serif;
+       border: 2px solid black;
+       text-align: center;
+   }

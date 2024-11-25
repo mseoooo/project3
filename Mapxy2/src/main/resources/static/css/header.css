@@ -1,0 +1,310 @@
+@import
+   url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+
+@import
+   url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+   
+   body{
+	width: 100%;
+	padding: 0;
+   }
+        html {
+			margin: 0 auto;
+			padding: 0;
+			overflow-x:hidden; 
+		}
+			
+		#wrap {
+			width: 100%;
+			margin: 0 auto;
+		}
+		
+		.hidden {
+		           display: none;
+		       }
+	   .orbit-regular {
+			       font-family: "Orbit", sans-serif;
+			       font-weight: 400;
+			       font-style: normal;
+			   }
+
+		.kirang-haerang-regular {
+			   	font-family: "Kirang Haerang", system-ui;
+			   	font-weight: 400;
+			   	font-style: normal;
+			   }
+		
+	
+		
+		.nav {
+			height: 60px;
+			width: 100%;
+		    display: flex;
+			font-family: "Orbit",sans-serif;
+			
+		    text-align: center;
+			/*align-items: center;*/
+		    background-color: white;
+			color: black;
+			white-space: nowrap;
+		    padding: 8px 12px;
+			position: relative;
+		}
+		
+		h1 {
+			font-size: 2em;
+			/*text-align: center;*/
+			align-items: center;
+			font-family: "Orbit",sans-serif;
+		}
+        
+		h2 {
+			font-size: 1.5em;
+			text-align: center;
+			align-items: center;
+			font-family: "Orbit",sans-serif;
+		}
+		 
+		h3 {
+			font-size: 1.5em;
+			text-align: right;
+			/*align-items: inherit;*/
+			font-family: "Orbit",sans-serif;
+			/*padding-left: 300px;*/
+				}       
+		
+		#menu {
+			display: flex;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		
+		#menu>li{
+			margin: 0 10px;
+		}
+		
+		hr {
+		   position: relative;
+		   left: 0;
+		   right: 0;
+		   border-width: 3px 0 0 0;
+		   border-style: dashed;
+		   border-color: black;
+		   margin: 0;
+		   z-index: 4;
+		}
+		
+		.hr {
+		    width: 30%;
+		    position: fixed;
+		   
+		   right: 0;
+		   border-width: 3px 0 0 0;
+		   border-style: dashed;
+		   border-color: black;
+		   margin: 0;
+		}
+		
+		.logo {
+			vertical-align: bottom;
+			margin: 7px 20px 0 20px;
+			font-size: 1.5em;
+		}
+		.logo:hover {
+		   transform: scale(1.1);
+		   align-items: left;
+		}
+	
+		.home {
+		   display: flex;
+		   position: relative; /* 가상 요소의 절대 위치를 설정하기 위해 사용 */
+		   font-size: 18px; /* 글자 크기 */
+		   font-weight: bold; /* 글자 두께 */
+		   height: 30px; /* 높이 설정 */
+		   margin: 15px; /* 간격 설정 */
+		   padding: 0; /* 패딩 제거 */
+		   color: white; /* 기본 글자 색상 */
+		   background-color: black; /* 기본 배경 색상 */
+		   transition: color 0.3s; /* 글자 색상 전환 효과 */
+		   text-align: center; /* 텍스트 중앙 정렬 */
+		}
+		
+		.home a{
+		     text-decoration: none; /* 링크의 밑줄 제거 */  
+		     color: inherit; /* 링크의 색상 제거 */
+		}
+
+		.home::before {
+		   content: ' '; /* 앞쪽 공백 */
+		   display: inline-block; /* 인라인 블록 요소로 설정 */
+		   position: relative;
+		   width: 10px; /* 원하는 너비 설정 */
+		}
+
+		.home::after {
+		   content: ' '; /* 뒤쪽 공백 */
+		   display: inline-block; /* 인라인 블록 요소로 설정 */
+		   width: calc(100% + 2ch); /* 글자 길이에 2글자를 더한 너비 */
+		   position: relative; /* 절대 위치 설정 */
+		   left: -1ch; /* 왼쪽으로 1글자 이동 */
+		   top: 0; /* 상단에 위치 */
+		   height: 100%; /* 높이를 부모 요소에 맞춤 */
+		   background-color: black; /* 배경 색상 */
+		   z-index: -1; /* 글자 뒤에 위치 */
+		   transition: opacity 0.3s; /* 배경 투명도 전환 효과 */
+		   width: 10px;
+		}
+
+		.home:hover {
+		   color: white; /* 마우스 오버 시 글자 색상 변경 */
+		}
+
+		.home:hover::after {
+		   opacity: 1; /* 마우스 오버 시 배경 보이게 설정 */
+		}
+
+		.word {
+		   position: relative; /* 가상 요소의 절대 위치를 설정하기 위해 사용 */
+		   font-size: 18px;
+		   font-weight: bold;
+		   height: 30px; /*  ////////////////*/
+		   margin: 15px; /* 간격 설정 */
+		   padding: 0; /* 패딩 제거 */
+		   color: black; /* 기본 글자 색상 */
+		   transition: color 0.3s; /* 글자 색상 전환 효과 */
+		   white-space:nowrap;
+		}
+        
+		a {
+		    text-decoration: none;
+		    color: black;
+		}
+		
+		.word a{
+		     text-decoration: none; /* 링크의 밑줄 제거 */  
+		     color: inherit; /* 링크의 색상 제거 */
+		}
+		
+		.word::after {
+		   display: flex;
+		   content: ' '; /* 가상 요소 생성 */
+		   position: absolute; /* 절대 위치 설정 */
+		   left: 0; /* 왼쪽 정렬 */
+		   top: 0; /* 위쪽 정렬 */
+		   left: -1ch;
+		   width: calc(100% + 2ch); /* 글자 길이에 맞추기 위해 100% */
+		   height: 100%;
+		   background-color: black; /* 배경 색상 */
+		   opacity: 0; /* 초기 투명도 */
+		   transition: opacity 0.3s; /* 투명도 부드러운 전환 */
+		   z-index: -1; /* 글자 뒤에 위치 */
+		   padding: 0; /* 패딩 제거 */
+		}
+
+		.word:hover {
+		   color: white; /* 마우스 오버 시 글자 색상 변경 */
+		   z-index: 0;
+		}
+
+		.word:hover::after {
+		   opacity: 1; /* 마우스 오버 시 배경 보이게 설정 */
+		}
+		
+	
+			
+	
+		/* 화면 너비 0 - 1200px */
+		@media (max-width: 1220px){
+			#wrap {width: 100%;}	
+			.nav {height: 60px;}	
+			.aside {height: 600px;}
+			.article1 {height: 600px;}
+			.article2 {height: 600px;}
+		}
+		
+		@media (min-width: 1220px){	
+		    .fas {
+				display: none;  /* 1220px 이하에서 햄버거 아이콘 숨김 */
+			}
+		}
+		
+		 /*화면 너비 0 - 768px */
+		@media (max-width: 768px){
+			.nav {
+				width: 100%;
+			}
+			.aside {width: 100%; height:500px;}
+			.article1 {width: 100%; height: auto;}			
+			.article2 {width: 100%; height: auto;}
+			
+			.footer .col {
+			      width: 50%;
+			    }
+			.footer .col h1 {
+			      font-size: 14px;
+			    }
+			.footer .col ul li {
+			      font-size: 13px;
+			    }
+            .fas{
+			      display: none; /*기본적으로 숨김*/
+					}
+			#menu {
+			      display: none; /*기본메뉴 숨김*/
+					           }
+			}
+		
+		@media (max-width: 596px){		
+			.nav {width: 100%;}
+			.aside { width: 100%; height:500px;}
+			.article1 { width: 100%; height: auto;}			
+			.article2 { width: 100%; height: auto;}
+			
+			.footer .col {
+			   width: 100%;
+			 }
+			.fas {
+			    display: block; /* 480px 이하에서 햄버거 아이콘 표시 */
+				font-size: 2em;
+				/*font-weight: bold;*/
+				cursor: pointer;  /*Makes it clear that it's clickable*/ 
+			 }
+
+			 #minimenu {
+			    width: 100%;
+				height: auto;
+				background-color: white;
+				position: absolute;  /*Make sure it overlaps properly*/ 
+				top: 78%;  /*Positioning for visibility*/ 
+				left: 0;  /*Positioning for visibility */
+				z-index: 10;  /*Ensure it appears above other elements */
+				display: none;
+				/*text-align: center;*/
+				align-items: center;
+			}
+			
+			#minimenu.active {
+			    display: block; /* active 클래스가 있을 때 표시 */
+			}
+			
+			 #minimenu > li {
+				font-size: 16px;
+				height: 10vh;
+				display: flex;
+				justify-content: center;
+				/*text-align: center;*/
+				align-items: center;
+				color: white;
+				width: 100%;
+			}
+
+			 #minimenu > li:hover {
+			    background-color: white;
+				height: 100%;
+				
+			}
+		}
+	
+		
+		
