@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+
+.orbit-regular {
+	font-family: "Orbit", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+/* 기본 리셋 */
+body,
+h1,
+p,
+form,
+div,
+input,
+button {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Orbit", sans-serif;
+	background-color: #f4f4f9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+
+
+}
+
+.wrapper {
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	padding: 50px;
+	width: 100%;
+	max-width: 700px;
+	/* 창 크기 확대 */
+	min-width: 500px;
+	/* 최소 너비를 설정 */
+	font-family: "Orbit", sans-serif;
+}
+
+/* 생년월일 입력란 스타일 */
+.birth_input {
+	color: #666;
+	display: flex;
+	align-items: center;
+	font-family: "Orbit", sans-serif;
+	/* 폰트 적용 */
+}
+
+.birth_input:focus {
+	border-color: #7f9e9f;
+	outline: none;
+	background-color: #fff;
+}
+
+.input_wrap {
+	margin-bottom: 20px;
+}
+
+.input_wrap label {
+	font-size: 16px;
+	color: #666;
+	display: block;
+	margin-bottom: 8px;
+}
+
+.input_wrap input {
+	width: 100%;
+	padding: 15px;
+	font-size: 18px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background-color: #f9f9f9;
+}
+
+.input_wrap input:focus {
+	border-color: #7f9e9f;
+	outline: none;
+	background-color: #fff;
+}
+
+.id_input_box {
+	display: flex;
+	align-items: center;
+}
+
+.id_input_box button {
+	background-color: #7f9e9f;
+	border: none;
+	color: white;
+	padding: 15px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	margin-left: 15px;
+	transition: background-color 0.3s;
+}
+
+.id_input_box button:hover {
+	background-color: #6b8788;
+}
+
+/* 버튼들을 나란히 배치할 컨테이너 */
+.buttons_wrap {
+	display: flex;
+	justify-content: space-between;
+	/* 버튼들이 양쪽 끝으로 정렬되도록 */
+	gap: 20px;
+	/* 버튼 사이에 간격을 추가 */
+	margin-top: 40px;
+	/* 버튼들이 위쪽에 너무 붙지 않도록 간격 추가 */
+}
+
+/* 회원가입 버튼 스타일 */
+.join_button_wrap {
+	flex: 1;
+	/* 첫 번째 버튼이 차지할 공간을 지정 */
+	text-align: center;
+}
+
+.join_button_wrap input[type="submit"] {
+	background-color: #72C8CF;
+	color: white;
+	padding: 15px 25px;
+	font-size: 18px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 100%;
+	/* 전체 너비를 채움 */
+	transition: background-color 0.3s;
+}
+
+.join_button_wrap input[type="submit"]:hover {
+	background-color: rgb(0, 128, 255);
+}
+
+/* 뒤로 가기 버튼 스타일 */
+.back_button_wrap {
+	flex: 1;
+	/* 두 번째 버튼이 차지할 공간을 지정 */
+	text-align: center;
+}
+
+.back_button_wrap button {
+	background-color: #FC7169;
+	color: white;
+	padding: 15px 25px;
+	font-size: 18px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 100%;
+	transition: background-color 0.3s;
+}
+
+.back_button_wrap button:hover {
+	background-color: #d32f2f;
+}
+
+@media (max-width: 500px) {
+	.wrapper {
+		padding: 30px;
+	}
+
+	.join_button_wrap input[type="submit"] {
+		padding: 12px 20px;
+	}
+}

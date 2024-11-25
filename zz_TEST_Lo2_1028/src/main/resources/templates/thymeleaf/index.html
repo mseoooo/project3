@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<title>kaja trip!</title>
+	<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+	<!--<link rel="stylesheet" href="flex-basic.css">-->
+	<link rel="stylesheet" href="/css/main.css" type="text/css" />
+
+	<!-- swiper css파일을 포함 - 슬라이더 레이아웃과 디자인 적용 -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<link href="/css/swiper.css" rel="stylesheet" type="text/css" />
+	<link href="/css/loginsignup.css" rel="stylesheet" type="text/css">
+
+	<script src="/js/main.js" defer></script>
+	<script src="/js/index.js" defer></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		window.sessionStorage.clear(); 
+	</script>
+
+</head>
+
+<body>
+	<div id="wrap">
+		<nav class="nav">
+			<div class="logo">
+
+				<a href=""><img src="../image/kp fullimg.png" height=50px></a>
+			</div>
+
+			<ul id="menu">
+				<li><a href="/">
+						<div class="home">홈</div>
+					</a></li>
+				<li><a href="/trip">
+						<div class="word">여행플랜짜기</div>
+					</a></li>
+				<li><a href="/shop">
+						<div class="word">스토어</div>
+					</a></li>
+			</ul>
+			<div class="fas">&#9776;</div> <!-- Font Awesome hamburger icon -->
+			<ul id="minimenu" class="hidden">
+				<li><a href="/">
+						<div class="home">홈</div>
+					</a></li>
+				<li><a href="/trip">
+						<div class="word">여행플랜짜기</div>
+					</a></li>
+				<li>
+					<form action="/shop" method="post">
+						<input type="hidden" name="word" th:value="${name}" />
+						<button type="submit">스토어</button>
+					</form>
+				</li>
+			</ul>
+		</nav>
+		<hr>
+
+		<section class="article1">
+			<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> <!-- Swiper 라이브러리 가져오기 -->
+
+			<!-- Slider main container -->
+			<div class="swiper">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div class="swiper-slide">
+							<img src="../image/jeju.jpg" alt="jeju festival">
+						</div>
+						<div class="swiper-slide">
+							<img src="../image/gangneung.jpg" alt="gangneung festival">
+						</div>
+						<div class="swiper-slide">
+							<img src="../image/busan.jpg" alt="busan festival">
+						</div>
+						<div class="swiper-slide">
+							<img src="../image/ahnheung.jpg" alt="ahnheung festival">
+						</div>
+					</div>
+
+					<!-- If we need pagination -->
+					<div class="swiper-pagination"></div>
+
+					<!-- If we need navigation buttons -->
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+				</div>
+			</div>
+
+			<script src="/js/swiper.js" defer></script><!-- 여기에서 JavaScript 파일을 호출합니다 -->
+
+		</section>
+		<aside class="aside">
+			<div class="login-wrapper">
+				<form method="post" action="/loginHaja2" id="loginForm" onsubmit="return validateForm()">
+					<input type="text" id="id" name="id" placeholder="아이디">
+					<input type="password" id="password2" name="password2" placeholder="비밀번호">
+					<br>
+					<input type="submit" value="로그인">
+					<div class="hr"
+						style="width: 200px; margin-left: auto; margin-right: 500px; margin-top: 30px; position: static;">
+					</div>
+				</form>
+				<script src="/js/index.js" defer></script>
+				<form method="post" action="kaja/join" id="signup-form">
+					<input type="submit" value="회원가입">
+				</form>
+			</div>
+		</aside>
+		<section class="article2">
+			<iframe
+				src="https://calendar.google.com/calendar/embed?height=400&wkst=2&ctz=Asia%2FSeoul&showPrint=0&showTabs=0&showTz=0&hl=ko&src=MjQ1ZTIwOWY1NDZkMzE0ZTRlYmNjZWYxZDFkMTNkMjA3MDg5YTBhYTFlZDEzMzhkMjk3Mzg2MmU5MjZkNDk0N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%2350a1b6"
+				style="border-width: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+		</section>
+
+		<!-- FOOTER START -->
+		<div class="footer">
+			<div class="contain">
+				<div class="col">
+					<h1><img src="/image/kp logo02.jpg" height="50px"></h1>
+					<ul>
+						<li>가자 트립!</li>
+						<li>흑백개발자 주식회사</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>이용정보</h1>
+					<ul>
+						<li>이용약관</li>
+						<li>저작권정책</li>
+						<li>개인정보처리방침</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>서비스</h1>
+					<ul>
+						<li>고객센터</li>
+						<li>FAQ</li>
+						<li>주소</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>회사정보</h1>
+					<ul>
+						<li>사업자등록번호</li>
+						<li>통신판매업신고번호</li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END OF FOOTER -->
+		</footer>
+	</div>
+</body>
+
+</html>

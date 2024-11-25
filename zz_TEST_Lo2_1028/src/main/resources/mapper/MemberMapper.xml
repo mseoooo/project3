@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.sboot.sijak.dao.MemberDAO"> 
+
+  	<insert id="memberJoin">
+  		<!--insert into membertest(id,name,email9,password,tel,birth,role) values(#{id},#{name}, #{email9}, #{password}, #{tel}, #{birth},#{user} ) -->
+  		insert into membertest(id,name,email,password,tel,birth) values(#{id},#{name}, #{email}, #{password}, #{tel}, #{birth}) 
+  	</insert>
+  	
+  <!-- 추가 10/20 -->	
+  	<select id="findByName" parameterType="String" resultType="com.sboot.sijak.vo.MemberVo">
+      select ID,PASSWORD from MEMBERTEST WHERE id = #{id}
+    </select> 
+    
+    <!-- 회원가입 아이디중복 체크-->
+    <select id="existsByUsername" parameterType="String" resultType="int">
+        select count(*) from MEMBERTEST WHERE id = #{id}
+    </select>
+    
+      <select id="rolecheck" parameterType="String" resultType="String">
+        select role from MEMBERTEST WHERE id = #{id}
+    </select>
+   <select id="getInfo" resultType="com.sboot.sijak.vo.MemberVo">
+		SELECT id AS id,
+		name AS name,
+		email AS email,
+		password AS password,
+		tel AS tel,
+		birth AS birth
+		FROM membertest
+		WHERE id = #{id}
+	</select>
+
+	<select id="getPaymentHistory"
+		resultType="com.sboot.sijak.vo.PaymentDTO">
+		SELECT product_name AS productName,
+		product_price AS productPrice,
+		merchant_uid AS merchantUid,
+		buyer_name AS buyerName,
+		buyer_tel AS buyerTel,
+		purchase_date AS purchaseDate
+		FROM payment_info
+		WHERE buyer_name = #{buyerName}
+		ORDER BY purchase_date DESC
+	</select>
+
+	<!-- 회원 정보 수정 (동적 업데이트) -->
+	<update id="updateMember"> UPDATE membertest <set>
+			<if test="name != null">name = #{name},</if>
+			<if test="email != null">email = #{email},</if>
+			<if test="password != null">password = #{password},</if>
+			<if test="tel != null">tel = #{tel},</if>
+			<if test="birth != null">birth = #{birth},</if>
+		</set> WHERE
+		id = #{id, jdbcType=VARCHAR} </update>
+
+</mapper>

@@ -1,0 +1,190 @@
+/*
+ =========== 로그인 ===================== */
+.login-wrapper {
+	width: 300px;
+	height: 450px;
+	padding: 40px 60px;
+	box-sizing: border-box;
+	/*border-radius: 30px;
+	border: 3px dashed;*/
+}
+
+#loginForm>input {
+	display: flex;
+	justify-content: center;
+	width: 200px;
+	height: 48px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	margin-bottom: 16px;
+	font-family: "Orbit", sans-serif;
+	border: 2px solid black;
+	/*여기에 border 추가*/
+}
+
+#loginForm>input::placeholder {
+	color: #D2D2D2;
+	text-align: center;
+}
+
+#loginForm>input[type="submit"] {
+	color: black;
+	font-size: 20px;
+	background-color: rgb(114, 200, 207);
+	font-family: "Kirang Haerang", system-ui;
+	cursor: pointer;
+}
+
+#loginForm>input[type="submit"]:hover {
+	transform: scale(1.1);
+	/*hover 시 크기 확대 */
+}
+
+#loginForm>input[type="checkbox"] {
+	display: none;
+	font-family: "Orbit", sans-serif;
+	cursor: pointer;
+	display: flex;
+
+}
+
+#loginForm>label {
+	color: black;
+	font-family: "Orbit", sans-serif;
+
+}
+
+#loginForm input[type="checkbox"]+label {
+	cursor: pointer;
+	padding-left: 26px;
+	background-image: url("checkbox.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#loginForm input[type="checkbox"]:checked+label {
+	background-image: url("checkbox-active.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.remember-label {
+	font-family: "Orbit", sans-serif;
+
+}
+
+/*=========== 회원가입 ===================== */
+#signup-form>input {
+	width: 200px;
+	height: 48px;
+	padding: 0 10px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	margin-bottom: 16px;
+	font-family: "Orbit", sans-serif;
+	border: 2px solid black;
+	/*여기에 border 추가*/
+
+}
+
+#signup-form>input[type="submit"] {
+	color: black;
+	font-size: 20px;
+	background-color: rgb(252, 113, 105);
+	margin-top: 30px;
+	font-family: "Kirang Haerang", system-ui;
+	text-align: center;
+	cursor: pointer;
+}
+
+#signup-form>input[type="submit"]:hover {
+	transform: scale(1.1);
+	/*hover 시 크기 확대 */
+}
+
+#loginForm2>input {
+	display: flex;
+	justify-content: center;
+	width: 200px;
+	height: 48px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	margin-bottom: 16px;
+	font-family: "Orbit", sans-serif;
+	border: 2px solid black;
+	/*여기에 border 추가*/
+}
+
+#loginForm2>input::placeholder {
+	color: #D2D2D2;
+	text-align: center;
+}
+
+#loginForm2>input[type="submit"] {
+	color: black;
+	font-size: 20px;
+	background-color: rgb(114, 200, 207);
+	font-family: "Kirang Haerang", system-ui;
+	cursor: pointer;
+}
+
+#loginForm2>input[type="submit"]:hover {
+	transform: scale(1.1);
+	/*hover 시 크기 확대 */
+}
+
+#loginForm2>input[type="checkbox"] {
+	display: none;
+	font-family: "Orbit", sans-serif;
+	cursor: pointer;
+	display: flex;
+
+}
+
+#loginForm2>label {
+	color: black;
+	font-family: "Orbit", sans-serif;
+
+}
+
+#loginForm2 input[type="checkbox"]+label {
+	cursor: pointer;
+	padding-left: 26px;
+	background-image: url("checkbox.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#loginForm2 input[type="checkbox"]:checked+label {
+	background-image: url("checkbox-active.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#signup-form2>input {
+	width: 200px;
+	height: 48px;
+	padding: 0 10px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	margin-bottom: 16px;
+	font-family: "Orbit", sans-serif;
+	border: 2px solid black;
+	/*여기에 border 추가*/
+
+}
+
+#signup-form2>input[type="submit"] {
+	color: black;
+	font-size: 20px;
+	background-color: rgb(252, 113, 105);
+	margin-top: 30px;
+	font-family: "Kirang Haerang", system-ui;
+	text-align: center;
+	cursor: pointer;
+}
+
+#signup-form2>input[type="submit"]:hover {
+	transform: scale(1.1);
+	/*hover 시 크기 확대 */
+}

@@ -1,0 +1,167 @@
+/* 전체 레이아웃 */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+}
+
+/* wrap 컨테이너 */
+.wrap {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	/* 전체 화면 높이 */
+}
+
+/* 왼쪽 사이드바 */
+.sidebar {
+	width: 200px;
+	background-color: #f4f4f4;
+	padding-top: 20px;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	width: 200px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.sidebar button {
+	width: 100%;
+	padding: 15px;
+	text-align: left;
+	background-color: #f4f4f4;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.sidebar button:hover {
+	background-color: #ddd;
+}
+
+/* 홈으로 돌아가기 버튼 스타일 */
+.sidebar button:last-child {
+	background-color: #f4f4f4;
+	color: #000000;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.sidebar button:last-child:hover {
+	background-color: #ddd;
+}
+
+/* 오른쪽 콘텐츠 영역 */
+.content {
+	flex-grow: 1;
+	/* 남은 공간을 차지 */
+	margin-left: 200px;
+	/* sidebar의 너비만큼 여백을 줌 */
+	padding: 20px;
+	background-color: #fff;
+	box-sizing: border-box;
+}
+
+.content h2 {
+	margin-top: 0;
+}
+
+.section {
+	display: none;
+}
+
+.active {
+	display: block;
+}
+
+/* 결제 내역 테이블 */
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table,
+th,
+td {
+	border: 1px solid #ddd;
+}
+
+th,
+td {
+	padding: 10px;
+	text-align: center;
+}
+
+/* 정보 수정 폼 */
+.section input {
+	padding: 10px;
+	margin: 5px 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.section button {
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+.section button:hover {
+	background-color: #0056b3;
+}
+
+/* FOOTER */
+.footer {
+	width: 100%;
+	background-color: black;
+	font-family: "Orbit", sans-serif;
+	padding: 10px 0;
+	color: white;
+	clear: both;
+	position: relative;
+}
+
+.footer .col {
+	width: 190px;
+	height: auto;
+	float: left;
+	box-sizing: border-box;
+	padding: 0px 20px 20px 20px;
+}
+
+.footer .col h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	line-height: 17px;
+	color: rgba(255, 255, 255, 0.2);
+	text-transform: uppercase;
+	letter-spacing: 0.250em;
+}
+
+.footer .col ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.footer .col ul li {
+	color: #999999;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.footer .col ul li:hover {
+	color: #ffffff;
+}
+
+.clearfix {
+	clear: both;
+}
