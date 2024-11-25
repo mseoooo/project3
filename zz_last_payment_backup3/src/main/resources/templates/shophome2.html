@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<title>매출관리</title>
+	<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+	<link rel="stylesheet" href="/css/shophome2.css" type="text/css" />
+</head>
+
+<body>
+	<div id="wrap">
+<div th:replace="~{header.html}"></div>
+
+		<div class="container">
+			<aside class="aside">
+				<form action="/member-info" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn1">회원정보관리</button>
+				</form><br>
+				<form action="/time" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn2 current">매출관리</button>
+				</form><br>
+				<form action="/viewuserdata" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn3">이용자데이터분석</button>
+				</form>
+			</aside>
+
+			<section class="article1">
+				<div class="mmddsales-wrapper">
+					<div id="mmddsales-form">
+						<table>
+							<tr>
+								<td th:text="'이번달 '+${thisMonth}+' 월 누적매출'"></td>
+							</tr>
+							<tr style="height: 30px;">
+								<td></td> <!-- 빈 td로 유지 -->
+							</tr>
+							<tr>
+								<td th:text="${monthlySales}+ ' 원'"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="todaysales-wrapper">
+					<div id="todaysales-form">
+						<table>
+							<tr>
+								<td th:text="'오늘 '+${todayDate}+' 누적매출'"></td>
+							</tr>
+							<tr style="height: 30px;">
+								<td></td> <!-- 빈 td로 유지 -->
+							</tr>
+							<tr>
+								<td th:text="${todaySales}+ ' 원'"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</section>
+		</div>
+		<section class="article2">
+			<form id="paymentForm" action="/pay_history" method="post" target="recentPayHistory" onsubmit="return handleSubmit(event)">
+			    <div class="form-row">
+			        <input type="text" id="inputField" name="inputField" placeholder="주문번호 또는 전화번호 입력" required>
+			        <button class="btn4" type="submit">조회</button>
+			    </div>
+			</form>
+			<h2>최근 결제 내역</h2>
+			<iframe id="recentPayHistory" name="recentPayHistory" height="100%" width="100%" frameborder="0"
+				src="/recentPayHistory"></iframe>
+		</section>
+		<script src="/js/shophome2.js"></script>
+
+		<script>
+		  function loadHTML(id, file) {
+		    fetch(file)
+		      .then(response => {
+		        if (!response.ok) {
+		          throw new Error('Network response was not ok');
+		        }
+		        return response.text();
+		      })
+		      .then(data => {
+		        document.getElementById(id).innerHTML = data;
+		      })
+		      .catch(error => console.error('Error loading file:', error));
+		  }
+
+		  loadHTML('header', 'header.html');
+		  loadHTML('footer', 'footer.html');
+		</script>
+		<!-- FOOTER START -->
+		<div th:replace="~{footer.html}"></div>
+		
+				</div>
+				<div class="clearfix"></div>
+			</div>
+</body>
+
+</html>

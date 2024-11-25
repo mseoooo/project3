@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<title>이용자데이터분석</title>
+	<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+	<link rel="stylesheet" href="/css/viewuserdata.css" type="text/css" />
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<script src="js/chart.js" defer></script>
+</head>
+
+<body>
+	<div id="wrap">
+		<div th:replace="~{header.html}"></div>
+
+		<div class="container">
+			<aside class="aside">
+				<form action="/member-info" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn1">회원정보관리</button>
+				</form><br>
+				<form action="/time" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn2">매출관리</button>
+				</form><br>
+				<form action="/viewuserdata" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn3 current">이용자데이터분석</button>
+				</form>
+			</aside>
+
+			<section class="article1">
+				<div class="container">
+					<figure class="highcharts-figure">
+						<div id="sales-chart" style="width: 400px; height: 100%;"></div>
+					</figure>
+					<figure class="highcharts-figure2">
+						<div id="region-sales-chart" style="width: 400px; height: 100%;"></div>
+					</figure>
+				</div>
+			</section>
+		</div>
+		<script>
+		  function loadHTML(id, file) {
+		    fetch(file)
+		      .then(response => {
+		        if (!response.ok) {
+		          throw new Error('Network response was not ok');
+		        }
+		        return response.text();
+		      })
+		      .then(data => {
+		        document.getElementById(id).innerHTML = data;
+		      })
+		      .catch(error => console.error('Error loading file:', error));
+		  }
+
+		  loadHTML('header', 'header.html');
+		  loadHTML('footer', 'footer.html');
+		</script>
+		<!-- FOOTER START -->
+		<div th:replace="~{footer.html}"></div>
+				</div>
+				<div class="clearfix"></div>
+				</div>
+</body>
+
+</html>

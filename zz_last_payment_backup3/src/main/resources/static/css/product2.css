@@ -1,0 +1,589 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+
+html {
+	margin: 0 auto;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+#wrap {
+	width: 100%;
+	margin: 0 auto;
+}
+
+/*.wrap {
+			width:100%;
+			height:auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: static;
+		}*/
+.hidden {
+	display: none;
+}
+
+.orbit-regular {
+	font-family: "Orbit", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.kirang-haerang-regular {
+	font-family: "Kirang Haerang", system-ui;
+	font-weight: 400;
+	font-style: normal;
+}
+
+body {
+	background-color: white;
+	margin: 0;
+	overflow-x: hidden;
+}
+
+/*.header {
+			width: 100%;
+			height: 60px;
+			background-color: white;
+			color: black;
+			z-index: 3;
+			font-family: "Orbit",sans-serif;
+			text-align: left;
+			white-space: nowrap;
+			display: flex;
+		}*/
+
+.nav {
+	height: 60px;
+	width: 100%;
+	display: flex;
+	font-family: "Orbit", sans-serif;
+	text-align: left;
+	background-color: white;
+	color: black;
+	white-space: nowrap;
+	padding: 8px 12px;
+	position: relative;
+}
+
+#menu {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#menu>li {
+	margin: 0 10px;
+}
+
+hr {
+	position: absolute;
+	left: 0;
+	right: 0;
+	border-width: 3px 0 0 0;
+	border-style: dashed;
+	border-color: black;
+	margin: 0;
+	z-index: 4;
+}
+
+.hr {
+	width: 30%;
+	position: fixed;
+
+	right: 0;
+	border-width: 3px 0 0 0;
+	border-style: dashed;
+	border-color: black;
+	margin: 0;
+}
+
+.logo {
+	vertical-align: bottom;
+	margin: 7px 20px 0 20px;
+	font-size: 1.5em;
+}
+
+.logo:hover {
+	transform: scale(1.1);
+	align-items: left;
+}
+
+.home {
+	display: flex;
+	position: relative;
+	/* 가상 요소의 절대 위치를 설정하기 위해 사용 */
+	font-size: 18px;
+	/* 글자 크기 */
+	font-weight: bold;
+	/* 글자 두께 */
+	height: 30px;
+	/* 높이 설정 */
+	margin: 15px;
+	/* 간격 설정 */
+	padding: 0;
+	/* 패딩 제거 */
+	color: white;
+	/* 기본 글자 색상 */
+	background-color: black;
+	/* 기본 배경 색상 */
+	transition: color 0.3s;
+	/* 글자 색상 전환 효과 */
+	text-align: center;
+	/* 텍스트 중앙 정렬 */
+}
+
+.home a {
+	text-decoration: none;
+	/* 링크의 밑줄 제거 */
+	color: inherit;
+	/* 링크의 색상 제거 */
+}
+
+.home::before {
+	content: ' ';
+	/* 앞쪽 공백 */
+	display: inline-block;
+	/* 인라인 블록 요소로 설정 */
+	position: relative;
+	width: 10px;
+	/* 원하는 너비 설정 */
+}
+
+.home::after {
+	content: ' ';
+	/* 뒤쪽 공백 */
+	display: inline-block;
+	/* 인라인 블록 요소로 설정 */
+	width: calc(100% + 2ch);
+	/* 글자 길이에 2글자를 더한 너비 */
+	position: relative;
+	/* 절대 위치 설정 */
+	left: -1ch;
+	/* 왼쪽으로 1글자 이동 */
+	top: 0;
+	/* 상단에 위치 */
+	height: 100%;
+	/* 높이를 부모 요소에 맞춤 */
+	background-color: black;
+	/* 배경 색상 */
+	z-index: -1;
+	/* 글자 뒤에 위치 */
+	transition: opacity 0.3s;
+	/* 배경 투명도 전환 효과 */
+	width: 10px;
+}
+
+.home:hover {
+	color: white;
+	/* 마우스 오버 시 글자 색상 변경 */
+}
+
+.home:hover::after {
+	opacity: 1;
+	/* 마우스 오버 시 배경 보이게 설정 */
+}
+
+.word {
+	position: relative;
+	/* 가상 요소의 절대 위치를 설정하기 위해 사용 */
+	font-size: 18px;
+	font-weight: bold;
+	height: 30px;
+	/*  ////////////////*/
+	margin: 15px;
+	/* 간격 설정 */
+	padding: 0;
+	/* 패딩 제거 */
+	color: black;
+	/* 기본 글자 색상 */
+	transition: color 0.3s;
+	/* 글자 색상 전환 효과 */
+	white-space: nowrap;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.word a {
+	text-decoration: none;
+	/* 링크의 밑줄 제거 */
+	color: inherit;
+	/* 링크의 색상 제거 */
+}
+
+.word::after {
+	display: flex;
+	content: ' ';
+	/* 가상 요소 생성 */
+	position: absolute;
+	/* 절대 위치 설정 */
+	left: 0;
+	/* 왼쪽 정렬 */
+	top: 0;
+	/* 위쪽 정렬 */
+	left: -1ch;
+	width: calc(100% + 2ch);
+	/* 글자 길이에 맞추기 위해 100% */
+	height: 100%;
+	background-color: black;
+	/* 배경 색상 */
+	opacity: 0;
+	/* 초기 투명도 */
+	transition: opacity 0.3s;
+	/* 투명도 부드러운 전환 */
+	z-index: -1;
+	/* 글자 뒤에 위치 */
+	padding: 0;
+	/* 패딩 제거 */
+}
+
+.word:hover {
+	color: white;
+	/* 마우스 오버 시 글자 색상 변경 */
+	z-index: 0;
+}
+
+.word:hover::after {
+	opacity: 1;
+	/* 마우스 오버 시 배경 보이게 설정 */
+}
+
+/*	.aside {
+			float: right;
+			width: 30%;
+			height: 600px;
+			background-color: white;
+			white-space:nowrap;
+			display: inline-block;
+		} 
+		
+		.article1 {
+			float: left;
+			width: 70%;
+			height: 600px;
+			background-color: white;
+		}
+		
+		.article2 {
+			float: left;
+			width: 100%;
+			height:600px;
+			background-color: white;
+
+			display: flex;  flexbox 사용 
+			justify-content: center;  수평 중앙 정렬 
+			align-items: center;  수직 중앙 정렬 
+			padding: 3% 0;*/
+
+section1 {
+	display: flex;
+	flex-wrap: wrap;
+	/* 요소가 자동으로 줄 바꿈하도록 설정 */
+	justify-content: space-between;
+	/*gap: 16px;*/
+	/* 요소 사이의 간격 설정 */
+	padding: 20px;
+	/* 패딩 추가 */
+	font-family: "Orbit", sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+section2 {
+	display: flex;
+	flex-wrap: wrap;
+	/* 요소가 자동으로 줄 바꿈하도록 설정 */
+	padding: 20px;
+	/* 패딩 추가 */
+	font-family: "Orbit", sans-serif;
+	font-size: 12px;
+	justify-content: center;
+	height: 600px;
+}
+
+.btn1 {
+	display: flex;
+	justify-content: center;
+	width: 200px;
+	height: 48px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	background-color: rgb(151, 214, 219);
+	margin-bottom: 16px;
+	font-family: "Kirang Haerang", system-ui;
+	font-size: 20px;
+	border: 2px solid black;
+	cursor: pointer;
+	text-align: center;
+	/*font-weight: bold;*/
+	align-items: center;
+}
+
+.btn2 {
+	display: flex;
+	justify-content: center;
+	width: 200px;
+	height: 48px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	background-color: rgb(0, 128, 255);
+	margin-bottom: 16px;
+	font-family: "Kirang Haerang", system-ui;
+	font-size: 20px;
+	border: 2px solid black;
+	cursor: pointer;
+	text-align: center;
+	/*font-weight: bold;*/
+	align-items: center;
+}
+
+.btn3 {
+	display: flex;
+	justify-content: center;
+	width: 200px;
+	height: 48px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	background-color: rgb(252, 113, 105);
+	margin-bottom: 16px;
+	font-family: "Kirang Haerang", system-ui;
+	font-size: 20px;
+	border: 2px solid black;
+	cursor: pointer;
+	text-align: center;
+	/*font-weight: bold;*/
+	align-items: center;
+}
+
+button:hover {
+	transform: scale(1.1);
+}
+
+figure {
+	border: 1px solid white;
+	width: calc(25% - 16px);
+	/* 4개의 열을 만듦, 간격을 고려하여 조정 */
+	height: auto;
+	/* 높이는 자동으로 조정 */
+	text-align: center;
+}
+
+/*}*/
+
+.footer {
+	clear: both;
+	width: 100%;
+	position: relative;
+	height: auto;
+	background-color: black;
+	font-family: "Orbit", sans-serif;
+	padding-left: 20px;
+}
+
+.footer .col {
+	width: 190px;
+	height: auto;
+	float: left;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 0px 20px 20px 20px;
+}
+
+.footer .col h1 {
+	margin: 0;
+	padding: 0;
+	font-family: inherit;
+	font-size: 12px;
+	line-height: 17px;
+	padding: 20px 0px 5px 0px;
+	color: rgba(255, 255, 255, 0.2);
+
+	text-transform: uppercase;
+	letter-spacing: 0.250em;
+}
+
+.footer .col ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.footer .col ul li {
+	color: #999999;
+	/*color: white;*/
+	font-size: 14px;
+	font-family: inherit;
+	font-weight: bold;
+	padding: 5px 0px 5px 0px;
+	cursor: pointer;
+	transition: .2s;
+	-webkit-transition: .2s;
+	-moz-transition: .2s;
+}
+
+.footer .col ul li:hover {
+	color: #ffffff;
+	transition: .1s;
+	-webkit-transition: .1s;
+	-moz-transition: .1s;
+}
+
+
+.clearfix {
+	clear: both;
+}
+
+
+/* 화면 너비 0 - 1200px */
+@media (max-width: 1220px) {
+	#wrap {
+		width: 100%;
+	}
+
+	.nav {
+		height: 60px;
+	}
+
+	.aside {
+		height: 600px;
+	}
+
+	.article1 {
+		height: 600px;
+	}
+
+	.article2 {
+		height: 600px;
+	}
+}
+
+@media (min-width: 1220px) {
+	.fas {
+		display: none;
+		/* 1220px 이하에서 햄버거 아이콘 숨김 */
+	}
+}
+
+/*화면 너비 0 - 768px */
+@media (max-width: 768px) {
+	.nav {
+		width: 100%;
+	}
+
+	.aside {
+		width: 100%;
+		height: 500px;
+	}
+
+	.article1 {
+		width: 100%;
+		height: auto;
+	}
+
+	.article2 {
+		width: 100%;
+		height: auto;
+	}
+
+	.footer .col {
+		width: 50%;
+	}
+
+	.footer .col h1 {
+		font-size: 14px;
+	}
+
+	.footer .col ul li {
+		font-size: 13px;
+	}
+
+	.fas {
+		display: none;
+		/*기본적으로 숨김*/
+	}
+
+	#menu {
+		display: none;
+		/*기본메뉴 숨김*/
+	}
+}
+
+
+@media (max-width: 596px) {
+	.nav {
+		width: 100%;
+	}
+
+	.aside {
+		width: 100%;
+		height: 500px;
+	}
+
+	.article1 {
+		width: 100%;
+		height: auto;
+	}
+
+	.article2 {
+		width: 100%;
+		height: auto;
+	}
+
+	.footer .col {
+		width: 100%;
+	}
+
+	.fas {
+		display: block;
+		/* 480px 이하에서 햄버거 아이콘 표시 */
+		font-size: 2em;
+		/*font-weight: bold;*/
+		cursor: pointer;
+		/*Makes it clear that it's clickable*/
+	}
+
+	#minimenu {
+		width: 100%;
+		height: auto;
+		background-color: white;
+		position: absolute;
+		/*Make sure it overlaps properly*/
+		top: 78%;
+		/*Positioning for visibility*/
+		left: 0;
+		/*Positioning for visibility */
+		z-index: 10;
+		/*Ensure it appears above other elements */
+		display: none;
+		text-align: center;
+	}
+
+	#minimenu.active {
+		display: block;
+		/* active 클래스가 있을 때 표시 */
+	}
+
+	#minimenu>li {
+		font-size: 16px;
+		height: 10vh;
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		color: white;
+		width: 100%;
+	}
+
+	#minimenu>li:hover {
+		background-color: white;
+		height: 100%;
+
+	}
+
+}

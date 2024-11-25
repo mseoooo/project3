@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<title>스토어</title>
+	<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+
+	<link rel="stylesheet" href="/css/shophome.css" type="text/css" />
+
+	<!-- swiper css파일을 포함 - 슬라이더 레이아웃과 디자인 적용 -->
+
+
+	<script src="/js/main.js" defer></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var userId = "[[${session.userId}]]";
+			var userName = "[[${session.userName}]]"
+			// userId가 존재하면 sessionStorage에 저장
+			if (userName) {
+				sessionStorage.setItem('userName', userName);
+				sessionStorage.setItem('userId', userId);
+			}
+		});
+	</script>
+</head>
+
+<body>
+
+	<script type="text/javascript">
+		// 세션에서 사용자 이름 가져오기
+	</script>
+
+	<div id="wrap">
+		<nav class="nav">
+			<div class="logo">
+
+				<a href="http://localhost:8810/"><img src="../image/kp fullimg.png" height=50px></a>
+			</div>
+
+			<ul id="menu">
+				<li><a href="/">
+						<div class="word">홈</div>
+					</a></li>
+				<li><a href="/trip">
+						<div class="word">여행플랜짜기</div>
+					</a></li>
+				<li><a href="/shop">
+						<div class="home">스토어</div>
+					</a></li>
+			</ul>
+			<div class="fas">&#9776;</div> <!-- Font Awesome hamburger icon -->
+			<ul id="minimenu" class="hidden">
+				<li><a href="/">
+						<div class="word">홈</div>
+					</a></li>
+				<li><a href="/trip">
+						<div class="word">여행플랜짜기</div>
+					</a></li>
+				<li><a href="/shop">
+						<div class="home">스토어</div>
+					</a></li>
+			</ul>
+		</nav>
+		<hr>
+		<section1>
+			<h1><span th:text="${session.userName}">이름</span>님 환영합니다!</h1>
+			<h1>투어패스 티켓입니다.</h1>
+		</section1>
+		<section2 style="display: flex;">
+			<div style="flex: 1; display: flex; justify-content: center;">
+				<h1 text-align="center">[ 상품 목록 ]</h1>
+			</div><br>
+			<div>
+				<h2 style="justify-content: right; padding-right: 100px;">
+					<form action="/cart" method="POST" style="display: inline;">
+						<input type="hidden" name="name" th:value="${session.userId}" />
+						<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+							<img src="image/cart.png" style="width: 50px;" alt="장바구니 아이콘">
+						</button>
+					</form>
+					<br>
+					장바구니
+
+				</h2>
+			</div>
+		</section2>
+		<section3>
+			<figure>
+				<form action="/product" method="POST">
+					<input type="hidden" name="productName" value="서울 투어패스 24시간권">
+					<input type="hidden" name="productPrice" value="26000">
+					<input type="hidden" name="image" value="/image/seoul.jpg">
+					<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+						<img src="image/seoul.jpg">
+						<figcaption>서울 투어패스 24시간권<br> 금액 : 26,000원</figcaption>
+					</button>
+				</form>
+			</figure>
+			<figure>
+				<form action="/product" method="POST">
+					<input type="hidden" name="productName" value="경기도 투어패스 36시간권">
+					<input type="hidden" name="productPrice" value="26000">
+					<input type="hidden" name="image" value="/image/gyeonggi.jpg">
+					<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+						<img src="image/gyeonggi.jpg">
+						<figcaption>경기도 투어패스 36시간권<br> 금액 : 26,000원</figcaption>
+					</button>
+				</form>
+			</figure>
+			<figure>
+				<form action="/product" method="POST">
+					<input type="hidden" name="productName" value="강원도 투어패스 48시간권">
+					<input type="hidden" name="productPrice" value="38000">
+					<input type="hidden" name="image" value="/image/gangwon.jpg">
+					<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+						<img src="image/gangwon.jpg">
+						<figcaption>강원도 투어패스 48시간권 <br> 금액 : 38,000원</figcaption>
+					</button>
+				</form>
+			</figure>
+			<figure>
+				<form action="/product" method="POST">
+					<input type="hidden" name="productName" value="경상도 투어패스 24시간권">
+					<input type="hidden" name="productPrice" value="20000">
+					<input type="hidden" name="image" value="/image/gyeongsang.jpg">
+					<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+						<img src="image/gyeongsang.jpg">
+						<figcaption>경상도 투어패스 24시간권 <br> 금액 : 20,000원</figcaption>
+					</button>
+				</form>
+			</figure>
+			<figure>
+				<form action="/product" method="POST">
+					<input type="hidden" name="productName" value="충청도 투어패스 36시간권">
+					<input type="hidden" name="productPrice" value="26000">
+					<input type="hidden" name="image" value="/image/choong.jpg">
+					<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+						<img src="image/choong.jpg">
+						<figcaption>충청도 투어패스 36시간권 <br> 금액 : 26,000원</figcaption>
+					</button>
+				</form>
+			</figure>
+			<figure>
+				<form action="/product" method="POST">
+					<input type="hidden" name="productName" value="전라도 투어패스 36시간권">
+					<input type="hidden" name="productPrice" value="26000">
+					<input type="hidden" name="image" value="/image/jeolla.jpg">
+					<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+						<img src="image/jeolla.jpg">
+						<figcaption>전라도 투어패스 36시간권 <br> 금액 : 26,000원</figcaption>
+					</button>
+				</form>
+			</figure>
+			<figure>
+				<form action="/product" method="POST">
+					<input type="hidden" name="productName" value="제주도 투어패스 48시간권">
+					<input type="hidden" name="productPrice" value="38000">
+					<input type="hidden" name="image" value="/image/jeju_pass.jpg">
+					<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+						<img src="image/jeju_pass.jpg">
+						<figcaption>제주도 투어패스 48시간권 <br> 금액 : 38,000원</figcaption>
+					</button>
+				</form>
+			</figure>
+		</section3>
+
+
+
+		<!-- FOOTER START -->
+		<div class="footer">
+			<div class="contain">
+				<div class="col">
+					<h1><img src="../image/kp logo02.jpg" height="50px"></h1>
+					<ul>
+						<li>가자 트립!</li>
+						<li>흑백개발자 주식회사</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>이용정보</h1>
+					<ul>
+						<li>이용약관</li>
+						<li>저작권정책</li>
+						<li>개인정보처리방침</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>서비스</h1>
+					<ul>
+						<li>고객센터</li>
+						<li>FAQ</li>
+						<li>주소</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>회사정보</h1>
+					<ul>
+						<li>사업자등록번호</li>
+						<li>통신판매업신고번호</li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END OF FOOTER -->
+		</footer>
+	</div>
+</body>
+
+</html>

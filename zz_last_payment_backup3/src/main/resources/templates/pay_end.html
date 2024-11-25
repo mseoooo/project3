@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>결제 완료</title>
+	<link rel="stylesheet" href="/css/pay_end.css" type="text/css" />
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+</head>	
+
+<body>
+
+	<div class="container">
+		<div class="content">
+			<h1>결제가 완료되었습니다.</h1>
+			<p>결제 내역은 <a href="/mypage">마이 페이지 &gt; 결제 내역</a>에서 조회하실 수 있습니다.</p>
+		</div>
+
+		<div class="summary">
+			<table>
+				<tr>
+					<th>주문자 ID</th>
+					<th>결제 방법</th>
+					<th>상품명</th>
+					<th>상품 금액</th>
+					<th>전화번호</th>
+				</tr>
+				<tr>
+					<td th:text="${buyerName}"></td>
+					<td>카카오페이</td>
+					<td th:text="${productName}"></td>
+					<td th:text="${productPrice}"></td>
+					<td th:text="${buyerTel}"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="buttons">
+			<button class="btn btn-primary" onclick="location.href='http://localhost:8810/'">메인으로</button>
+			<form action="/shop" method="post">
+				<input type="hidden" name="word" th:value="${buyerName}" />
+				<button class="btn btn-secondary" type="submit">계속 쇼핑하기</button>
+			</form>
+		</div>
+</body>
+
+</html>

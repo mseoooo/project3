@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<title>스토어</title>
+	<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+	<!--<link rel="stylesheet" href="flex-basic.css">-->
+	<link rel="stylesheet" href="/css/product2.css" type="text/css" />
+	<link rel="stylesheet" href="/css/daterangepicker.css" type="text/css" />
+	<!--	<link rel="stylesheet" href="/css/index_kkk.css" type="text/css" />-->
+
+	<!-- swiper css파일을 포함 - 슬라이더 레이아웃과 디자인 적용 -->
+	
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<!--<link rel="stylesheet" href="https://t1.kakaocdn.net/online_payment/mockup-online-payment-pc-bridge-client/3c296bcc363f6110d94150d63869bd3dcb442001/static/index-7b456455.css" integrity="sha384-8r+iTCeotep+r+w91vScnm7J0m1uJuMZY7lZL9Dqaw1oFeTVP/eZgBIYSvnY3lOy" crossorigin="anonymous">
+-->
+</head>
+
+<body>
+
+	<div id="wrap">
+
+		<nav class="nav">
+			<div class="logo">
+
+				<a href="/"><img src="../image/kp fullimg.png" height=50px></a>
+			</div>
+
+			<ul id="menu">
+				<li><a href="/">
+						<div class="word">홈</div>
+					</a></li>
+				<li><a href="/trip">
+						<div class="word">여행플랜짜기</div>
+					</a></li>
+				<li><a href="/shop">
+						<div class="home">스토어</div>
+					</a></li>
+			</ul>
+			<div class="fas">&#9776;</div> <!-- Font Awesome hamburger icon -->
+			<ul id="minimenu" class="hidden">
+				<li><a href="/">
+						<div class="word">홈</div>
+					</a></li>
+				<li><a href="/trip">
+						<div class="word">여행플랜짜기</div>
+					</a></li>
+				<li><a href="/shop">
+						<div class="home">스토어</div>
+					</a></li>
+			</ul>
+
+		</nav>
+		<hr>
+
+		<section1 style=" align-items: flex-end;">
+			<div style=" flex-grow: 1; text-align: center;">
+				<h1>
+					[ 판매 페이지 ]
+				</h1>
+			</div><br>
+			<div>
+				<h2 style="justify-content: right; padding-right: 100px;">
+					<form action="/cart" method="POST" style="display: inline;">
+						<input type="hidden" name="name" th:value="${session.userId}" />
+						<button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+							<img src="image/cart.png" style="width: 50px;" alt="장바구니 아이콘">
+						</button>
+					</form>
+					<br>
+					장바구니
+
+				</h2>
+			</div>
+		</section1>
+
+		<section2>
+
+			<figure>
+				<img th:src="${image}" style="width: 350px;">
+			</figure>
+			<h1><span th:text="${productName}"></span> <br>
+				<span th:text="'총 결재금액: '+${productPrice}+'원'"></span> <br>
+				<br>
+				※결제완료 후 해당 전화번호로<br> QR코드를 발송해드립니다 ※<br><br>
+				
+			
+				<button class="btn1" th:attr="
+										                data-product-name=${productName}, 
+										                data-product-price=${productPrice}" onclick="requestPay(this)">결제하기</button>
+				<!--	<button class="btn1" onclick="requestPay()">결제하기</button>-->
+				<form action="/cart/add" method="POST" style="display: inline;">
+					<input type="hidden" name="productName" th:value="${productName}" />
+					<input type="hidden" name="productPrice" th:value="${productPrice}" />
+					<input type="hidden" name="name" th:value="${session.userId}" />
+
+					<button class="btn2" type="submit">장바구니 담기</button>
+
+
+				</form>
+				<button class="btn3" type="button" onclick="location.href='/shop'">뒤로가기</button>
+			</h1>
+		</section2>
+
+		<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+		<script src="/js/payment.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+
+		<!-- FOOTER START -->
+		<div class="footer">
+			<div class="contain">
+				<div class="col">
+					<h1><img src="../image/kp logo02.jpg" height="50px"></h1>
+					<ul>
+						<li>가자 트립!</li>
+						<li>흑백개발자 주식회사</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>이용정보</h1>
+					<ul>
+						<li>이용약관</li>
+						<li>저작권정책</li>
+						<li>개인정보처리방침</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>서비스</h1>
+					<ul>
+						<li>고객센터</li>
+						<li>FAQ</li>
+						<li>주소</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h1>회사정보</h1>
+					<ul>
+						<li>사업자등록번호</li>
+						<li>통신판매업신고번호</li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END OF FOOTER -->
+		</footer>
+	</div>
+
+</body>
+
+</html>

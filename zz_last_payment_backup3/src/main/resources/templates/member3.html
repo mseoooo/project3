@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>회원정보관리</title>
+	<link href="../image/kp logo.png" rel="shortcut icon" type="image/x-icon">
+	<link rel="stylesheet" href="/css/member.css" type="text/css" />
+	<link rel="stylesheet" href="/css/memberModal.css" type="text/css" />
+	<script src="/js/member-info.js" defer></script>
+</head>
+
+<body>
+	<!--hello-->
+	<div id="wrap">
+		<div th:replace="~{header.html}"></div>
+
+		<div class="container">
+			<aside class="aside">
+				<form action="/member-info" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn1 current">회원정보관리</button>
+				</form><br>
+				<form action="/time" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn2">매출관리</button>
+				</form><br>
+				<form action="/viewuserdata" method="post">
+					<!-- 필요한 숨겨진 필드들 -->
+					<input type="hidden" name="purchaseDate" th:value="${purchaseDate}">
+					<!-- 전송 버튼 -->
+					<button type="submit" class="btn3">이용자데이터분석</button>
+				</form>
+			</aside>
+
+
+			<section class="article1">
+				<table border="1">
+					<thead>
+						<tr>
+							<th>아이디</th>
+							<th>회원명</th>
+							<th>이메일</th>
+							<th>휴대폰번호</th>
+							<th>생년월일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${#lists.isEmpty(memberInfo)}">
+							<td colspan="6">회원 정보가 없습니다.</td>
+						</tr>
+						<tr th:each="member : ${memberInfo}">
+							<!-- 클릭 가능한 회원 ID와 이름 -->
+							<td><a href="javascript:void(0);" th:data-id="${member.id}"
+									th:data-userName="${member.name}" th:data-email="${member.email}"
+									th:data-tel="${member.tel}"
+									th:data-birth="${#dates.format(member.birth, 'yyyy-MM-dd')}" class="member-info">
+									<span th:text="${member.id}"></span>
+								</a></td>
+							<td><a href="javascript:void(0);" th:data-id="${member.id}"
+									th:data-userName="${member.name}" th:data-email="${member.email}"
+									th:data-tel="${member.tel}"
+									th:data-birth="${#dates.format(member.birth, 'yyyy-MM-dd')}" class="member-info">
+									<span th:text="${member.name}"></span>
+								</a></td>
+							<td th:text="${member.email}"></td>
+							<td th:text="${member.tel}"></td>
+							<td th:text="${#dates.format(member.birth, 'yyyy-MM-dd')}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</div>
+		<div class="pagination">
+			<!-- 이전 버튼 -->
+			<form th:action="@{/member-info}" method="POST" style="display: inline;">
+				<input type="hidden" name="page" th:value="${currentPage > 1 ? currentPage - 1 : 1}">
+				<button type="submit" th:disabled="${currentPage == 1}">이전</button>
+			</form>
+
+			<!-- 페이지 번호 목록 -->
+			<span>
+				<!-- 페이지 번호 동적으로 생성 -->
+				<form th:action="@{/member-info}" method="POST" style="display: inline;">
+					<input type="hidden" name="page" value="1">
+					<button1 type="submit" th:disabled="${currentPage == 1}" class="page-btn"
+						th:classappend="${currentPage == 1 ? 'current-page' : ''}">1</button1>
+				</form>
+
+				<!-- 페이지 번호 범위 -->
+				<span th:each="i : ${#numbers.sequence(2, totalPages)}">
+					<form th:action="@{/member-info}" method="POST" style="display: inline;">
+						<input type="hidden" name="page" th:value="${i}">
+						<button1 type="submit" th:disabled="${currentPage == i}" class="page-btn"
+							th:classappend="${currentPage == i ? 'current-page' : ''}" th:text="${i}"></button>
+					</form>
+				</span>
+			</span>
+
+			<!-- 다음 버튼 -->
+			<form th:action="@{/member-info}" method="POST" style="display: inline;">
+				<input type="hidden" name="page" th:value="${currentPage + 1}">
+				<button type="submit" th:disabled="${currentPage == totalPages || totalPages == 0}">다음</button>
+			</form>
+		</div>
+		<!-- Modal (회원 정보) -->
+		<div id="memberInfoModal" class="modal">
+			<div class="modal-content">
+				<h2>회원 정보</h2>
+				<form id="memberEditForm">
+					<p><strong>ID:</strong> <span id="modalId"></span></p>
+					<p><strong>이름:</strong> <input type="text" id="modalUserName" pattern="^[가-힣]+$"
+							title="이름은 한글만 입력 가능합니다." disabled></p>
+					<p><strong>이메일:</strong> <input type="email" id="modalEmail" disabled></p>
+					<p><strong>전화번호:</strong> <input type="text" id="modalTel" pattern="^010-\d{4}-\d{4}$"
+							title="전화번호는 010-xxxx-xxxx 형식으로 입력하세요." disabled></p>
+					<p><strong>생년월일:</strong> <input type="date" id="modalBirth" disabled></p>
+
+					<!-- 수정, 삭제, 닫기 버튼들 -->
+					<div class="modal-footer">
+						<button id="editButton" class="btn" type="button">수정</button>
+						<button id="saveButton" class="btn" type="button" style="display: none;">저장</button>
+						<button id="deleteButton" class="btn" type="button">삭제</button>
+						<button class="btn close" onclick="closeModal()" type="button">닫기</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<script>
+			function loadHTML(id, file) {
+				fetch(file)
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Network response was not ok');
+						}
+						return response.text();
+					})
+					.then(data => {
+						document.getElementById(id).innerHTML = data;
+					})
+					.catch(error => console.error('Error loading file:', error));
+			}
+
+			loadHTML('header', 'header.html');
+			loadHTML('footer', 'footer.html');
+		</script>
+		<!-- FOOTER START -->
+		<div th:replace="~{footer.html}"></div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sboot.sijak.last_payment.mapper.PaymentMapper">
+	<insert id="insertPaymentInfo"
+		parameterType="com.sboot.sijak.last_payment.dto.PaymentDTO">
+		INSERT INTO payment_info (product_name, product_price, merchant_uid,
+		buyer_name, buyer_tel, purchase_date)
+		VALUES (#{productName}, #{productPrice}, #{merchantUid}, #{buyerName},
+		#{buyerTel}, #{purchaseDate})
+	</insert>
+
+	<select id="getPaymentHistory"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO">
+		SELECT product_name AS productName,
+		product_price AS productPrice,
+		merchant_uid AS merchantUid,
+		buyer_name AS buyerName,
+		buyer_tel AS buyerTel,
+		purchase_date AS purchaseDate
+		FROM payment_info
+		WHERE buyer_name = #{buyerName}
+		ORDER BY purchase_date DESC
+	</select>
+
+	<select id="getRecentPayHistory"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO">
+		SELECT productName, productPrice, merchantUid, buyerName, buyerTel,
+		purchaseDate
+		FROM (
+		SELECT product_name AS productName,
+		product_price AS productPrice,
+		merchant_uid AS merchantUid,
+		buyer_name AS buyerName,
+		buyer_tel AS buyerTel,
+		purchase_date AS purchaseDate,
+		ROW_NUMBER() OVER (ORDER BY purchase_date DESC) AS rn
+		FROM payment_info
+		)
+		WHERE rn &gt;= #{startRow} AND rn &lt;= #{endRow}
+	</select>
+
+	<select id="getTotalRecords" resultType="int">
+		SELECT COUNT(*) FROM payment_info
+	</select>
+
+	<select id="getMonthlySales"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO">
+		SELECT
+		product_name AS productName,
+		product_price AS productPrice,
+		merchant_uid AS merchantUid,
+		buyer_name AS buyerName,
+		buyer_tel AS buyerTel,
+		purchase_date AS purchaseDate
+		FROM
+		payment_info
+		WHERE
+		TO_CHAR(purchase_date, 'YYYY-MM') = TO_CHAR(SYSDATE, 'YYYY-MM')
+	</select>
+	<select id="getThreeMSales"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO"> SELECT
+		product_price AS productPrice, purchase_date AS purchaseDate FROM
+		payment_info WHERE purchase_date &gt;= TRUNC(ADD_MONTHS(SYSDATE, -2),
+		'MM') <!-- 지지난달 첫날--> AND purchase_date &lt; TRUNC(ADD_MONTHS(SYSDATE, 1), 'MM') <!--
+		다음달 첫날--> ORDER
+		BY purchase_date DESC </select>
+	<select id="getTodaySales"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO">
+		SELECT
+		product_name AS productName,
+		product_price AS productPrice,
+		merchant_uid AS merchantUid,
+		buyer_name AS buyerName,
+		buyer_tel AS buyerTel,
+		purchase_date AS purchaseDate
+		FROM
+		payment_info
+		WHERE
+		TO_CHAR(purchase_date, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+	<select id="getRegionSales"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO"> SELECT CASE
+		WHEN product_name LIKE '%경상도%' THEN '경상도' WHEN product_name LIKE '%경기도%'
+		THEN '경기도' WHEN product_name LIKE '%강원도%' THEN '강원도' WHEN product_name
+		LIKE '%충청도%' THEN '충청도' WHEN product_name LIKE '%서울%' THEN '서울' WHEN
+		product_name LIKE '%제주도%' THEN '제주도' WHEN product_name LIKE '%전라도%' THEN
+		'전라도' ELSE '기타' END AS region, <!-- 지역명을 추출--> product_name AS productName, <!-- 제품명-->
+		product_price AS productPrice, <!--제품 가격--> purchase_date AS purchaseDate <!--구매 날짜--> FROM
+		payment_info WHERE purchase_date &gt;= TRUNC(ADD_MONTHS(SYSDATE, -1),
+		'MM') <!--지난 달 첫날--> AND purchase_date &lt; TRUNC(SYSDATE, 'MM') <!--이번 달 첫날--> ORDER BY region,
+		purchase_date </select>
+	<select id="getMemberInfo"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO">
+		SELECT id, name, email, tel, birth
+		FROM (
+		SELECT id AS id,
+		name AS name,
+		email AS email,
+		tel AS tel,
+		birth AS birth,
+		ROW_NUMBER() OVER (ORDER BY id DESC)
+		AS rn
+		FROM membertest
+		)
+		WHERE rn &gt;= #{startRow} AND rn &lt;= #{endRow}
+	</select>
+	<select id="getTotalRecords2" resultType="int">
+		SELECT COUNT(*) FROM membertest
+	</select>
+	<!-- 회원 정보 수정 (동적 업데이트) -->
+	<update id="updateMemberByAdmin"> UPDATE membertest <set>
+			<if test="name != null">name = #{name},</if>
+			<if test="email != null">email = #{email},</if>
+			<if test="tel != null">tel = #{tel},</if>
+			<if test="birth != null">birth = #{birth},</if>
+		</set> WHERE
+		id = #{id, jdbcType=VARCHAR} </update>
+
+	<!--  주문번호로 결제 내역 조회 -->
+	<select id="getPaymentHistoryByOrderNumber"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO"> SELECT
+		product_name AS productName, product_price AS productPrice, merchant_uid
+		AS merchantUid, buyer_name AS buyerName, buyer_tel AS buyerTel,
+		purchase_date AS purchaseDate FROM payment_info WHERE merchant_uid =
+		#{orderNumber} <!-- 주문번호 --> ORDER BY purchase_date DESC </select>
+
+	<!--  전화번호로 결제 내역 조회 -->
+	<select id="getPaymentHistoryByPhoneNumber"
+		resultType="com.sboot.sijak.last_payment.dto.PaymentDTO"> SELECT
+		product_name AS productName, product_price AS productPrice, merchant_uid
+		AS merchantUid, buyer_name AS buyerName, buyer_tel AS buyerTel,
+		purchase_date AS purchaseDate FROM payment_info WHERE buyer_tel =
+		#{phoneNumber} <!-- 전화번호 --> ORDER BY purchase_date DESC </select>
+		
+	<!-- 회원 정보 삭제 (동적 업데이트) -->
+	<delete id="deleteMemberByAdmin">
+		DELETE FROM membertest
+		WHERE id = #{id, jdbcType=VARCHAR}
+	</delete>
+
+	<select id="getBuyerTel" parameterType="String" resultType="String">
+		SELECT tel FROM membertest WHERE id = #{id}
+	</select>
+</mapper>

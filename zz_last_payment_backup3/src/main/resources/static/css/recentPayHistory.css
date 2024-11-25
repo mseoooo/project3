@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+
+
+.orbit-regular {
+	font-family: "Orbit", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.kirang-haerang-regular {
+	font-family: "Kirang Haerang", system-ui;
+	font-weight: 400;
+	font-style: normal;
+}
+
+table {
+	margin-top:40px;	
+	border: 1px solid #000;
+    margin: 0 auto; /* 테이블을 수평 중앙 정렬 */
+    font-family: "Orbit", sans-serif;
+	background-color: white;
+}
+table th, table td {
+  padding: 8px 12px; /* 셀의 여백을 적당히 설정 */
+  text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+iframe {
+  margin-top: 20px; /* iframe을 상단에서 20px 떨어지게 */
+  border: 0; 
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	font-family: "Orbit", sans-serif;
+}
+
+.pagination button {
+	margin: 0 5px;
+	padding: 5px 10px;
+	font-family: "Orbit", sans-serif;
+}
+
